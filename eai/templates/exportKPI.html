@@ -1,0 +1,39 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list admin_urls suit_list suit_tags %}
+{% load url from suit_compat %}
+
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <ul class="breadcrumb">
+            <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                <span class="divider">&raquo;</span></li>
+            <li>KPI报表</a> </li>
+        </ul>
+    {% endblock %}
+{% endif %}
+
+
+
+{% block sidebar %}
+
+<div>
+
+<form action="/exportKPI/" method="post">
+    请使用Chrome浏览器,否则日期输入格式按照"2016-09-11"输入
+    <br/>
+    <br/>
+    请输入报表起始日期: <input type="date" name="start_date" />
+    <br/>
+    请输入报表终止日期: <input type="date" name="end_date" />
+    <br/>
+    <br/>
+    <input type="submit" value="下载KPI报表"/>
+    <br/>
+    <br/>
+
+</form>
+
+</div>
+
+{% endblock %}
